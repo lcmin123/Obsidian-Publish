@@ -7,8 +7,10 @@ permalink: /
 
 # Welcome! 🌱
 
+안녕하세요! 이창민의 <b>디지털 정원(Digital Garden)</b> 입니다.
+
 <p style="padding: 3em 1em; background: #f5f7ff; border-radius: 4px;">
-  Take a look at <span style="font-weight: bold">[[Your first note]]</span> to get started on your exploration.
+  Take a look at 이창민의 <span style="font-weight: bold">[[Digital Garden]]</span> to get started on your exploration.
 </p>
 
 This digital garden template is free, open-source, and [available on GitHub here](https://github.com/maximevaillancourt/digital-garden-jekyll-template).
