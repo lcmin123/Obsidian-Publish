@@ -1,0 +1,8 @@
+- Js의 원시 타입들
+	- [[Number]] - [[변수]] - [[Math]]
+	- [[String]]
+	- [[Boolean]]
+	- Null → 임의로 값이 없다는걸 표현(무)
+	- Undefined → 정의되지 않은 값 표현(미정)
+	- Symbol
+	- BigInt
