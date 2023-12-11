@@ -1,0 +1,90 @@
+- **Intrusion Detection System
+	- 침입 탐지 시스템
+	- 침입행위에 대한 탐지를 수행하고 탐지시 대응할 수 있도록 지원하는 일련의 시스템
+	- Intrusion
+		- 시스템에 허가되지 않은 방법으로 내부 자원 접근
+		- 로그인 시도(ID,PW 추측)
+		- 불법적으로 데이터 도용 시도 (rootkit)
+		- root/관리자권한 획득 시도
+		- 메일발송 실행파일을 숨겨놓고 메일전송시도
+		- 백도어 접근 시도
+	- Detection
+		- Signateure-based detection
+		  침입 사건들을 패턴화
+			- Signature Example
+				- 실행파일 첨부 메일
+				- 파일 읽기 시도
+				- 로그인 시도
+			- 장점
+				- Known Attack에 대해 효율적
+			- 단점
+				- Unknown Attack에 취약
+				- 새로운 공격 유형 발견 때마다 Signature 생성해야함
+				- 일반적으로 False negative rate 높음
+		- Anomaly-based detection
+		  정상범위를 벗어나는 사건을 탐지
+			- Anomaly Example 
+				- 휴일에 트래픽량 증가
+				- 일반사용자가 갑자기 메일 1000통 발송
+				- 특정 호스트에 단시간 주문요청 100%증가
+				- 국내 사용자 카드가 해외에서 결제
+			- 장점
+				- 머신 러닝 처리
+				- Unknown Attack에 효율적
+			- 단점
+				- 정상범위 정의 어려움
+				- 비정상 탐지까지 기다려야 함
+	- IDS Types
+		- Network-based IDS
+		  네트워크 망 곳곳의 트래픽을 모니터, 분석해 침입 탐지
+			- Example 
+				- Ddos, Worm
+			- 장점
+				- 호스트 부하 적음 (하나의 NIDS로 여러 호스트 보호)
+				- 조기 탐지 가능
+				- 취약한 부분의 패킷을 정밀 분석해 다양한 침입 탐지
+			- 단점
+				- 각 호스트 내부는 탐지 제한
+				- 전체 네트워크망에 부하
+		- Wireless IDS
+		  무선통신 네트워크망의 트래픽 분석
+			- 장점
+				- 무선통신의 취약성 위협 탐지
+			- 단점
+				- 네트워크 부하, 비용
+		- Host-based IDS
+		  특정 호스트 컴퓨터 내부를 모니터링, 분석 탐지
+			- Example 
+				- 로그분석, 파일시스템 기록분석, 실행코드 분석
+			- 장점
+				- 악성 SW 탐지 용이
+				- 내부공격자 탐지
+			- 단점
+				- 각 호스트마다 다름
+				- 호스트 부하
+		- Distributed Host-based IDS
+		  여러 HIDS들이 연계하여 전체적으로 호스트 분석 탐지
+			- 장점
+				- 효율적이고 정확
+				- 공격들의 연관관계 파악 용이
+			- 단점
+				- HIDS보다 복잡, 부담
+	- Honey Pot
+		- 꿀단지
+		- 의도적으로 해커의 침입을 유도하는 시스템
+		- 해커 정보 수집, 공격 유형 파악, 대응 전략 수립, 법적 증거
+		- 침입자 활동 감시, 로그 기록
+	- IDS 평가 기준
+		- False Positive Rate
+			- 정상을 침입으로 판단하는 확률
+		- False Negative Rate
+			- 침입을 정상으로 판단하는 확률
+		- True Positive Rate
+			- 침입을 침입으로 판단하는 확률
+		- True Negative Rate
+			- 정상을 정상으로 판단하는 확률
+		- ![[Pasted image 20231210194411.png|200]]
+			- 침입을 침입으로 판단한 True Positive Rate와 침입을 정상으로 판단한 False Positive Rate의 합인 281+427이 실제 침입 숫자
+- IPS
+	- 침입 방지 시스템
+	- IDS로 탐지 후 침입 방지조치까지 취함

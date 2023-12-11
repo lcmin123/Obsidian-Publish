@@ -1,0 +1,39 @@
+- 방화벽
+	- 조직의 내부 네트워크를 외부 인터넷으로부터 격리시키고, 일부 패킷은 통과시키며 다른 패킷은 차단하는 하드웨어와 소프트웨어의 결합
+	- 서비스
+		- 트래픽 모니터링
+		- 트래픽 컨트롤
+		- NAT - 내부 네트워크 보호
+		- VPN - 내부 트래픽 노출 차단
+	- State
+		- 패킷의 Ip주소 + port number
+	- 타입
+		- Stateless packet filter
+			-  나의 IP주소 + 포트넘버로 부터 상대 IP주소 + 포트넘버로 가는 패킷을 뜯어서 차단 여부 결정
+			- ACL(접근 제어 목록)을 사용
+				- 장점
+					- 직관적인 동작, 간단, 빠름
+				- 단점
+					- application layer protocol의 취약점공격에 차단 불가능
+					- 사용자/application 별 서비스 제공불가능 
+					- 필터링시 사용 정보가 제한되어서 정교한 필터링 불가능
+					- IP주소 위변조 여부 판단 불가능
+		- Stateful packet filter
+			- Stateless에서 발전된 형태. 패킷의 상태를 기억해서 통과 기준을 설립
+			- inactive connection을 filter하는데에 가장 효율적
+				- 장점
+					- 정교한 필터링
+				- 단점
+					- 상태정보 테이블 검사 수행에 따른 성능저하
+		- Application gateway
+			- Application 단위(e.g Chrome, Safari …)로 인터넷 사용 여부를 결정해줌. 패킷 단위는 없다. 
+				- 장점
+					- Application layer protocol 공격 차단
+					- 사용자 인증가능
+					- 정교한 Log, audit 가능
+				- 단점
+					- 각각의 애플리케이션(텔넷, HTTP, FTP, 이메일 등)마다 별도의 애플리케이션 게이트웨이가 필요
+					- 모든 데이터가 게이트웨이를 통과하기 때문에 성능이 저하
+	- 한계
+		- 내부 공격자 방어(Ip spoofing)에 취약
+		- 데이터 내용은 미확인 - 문서 등 내부에 심어진 악성코드 방어 취약

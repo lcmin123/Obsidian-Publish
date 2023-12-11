@@ -1,0 +1,39 @@
+- [[Ipsec]] : **Network Layer**에서 IP 패킷 보호, 안전 전송
+	- 하는일
+		- IP주소 위장 방지 (출발지 인증)
+		- IP 데이터그램의 변경 및 재전송 방지
+		- IP 데이터그램을 위한 기밀성, 무결성 제공
+		- 보안 프로토콜 선택 (시스템이 요구하는)
+		- 암호 알고리즘 선택 (프로토콜에서 사용되도록)
+		- 암호키 생성, 분배(서비스 제공에 필요)
+	- Application
+		- VPN(Virtual Private Network)
+		- 가상 전용 회선
+	- 구성
+		- IPsec AH(Authenticate Header) 프로토콜
+			- 데이터 근원 인증
+			- 비연결형 [[무결성]] 
+		- 캡슐화 보안 페이로드
+			- 데이터 근원 인증
+			- 비연결형 [[무결성]] 
+			- 데이터 [[기밀성]] 
+			- 제한된 트래픽 흐름 [[기밀성]] 
+			- 재전송 공격 방지
+		- IKE 프로토콜
+			- 통신 당사자간 키관리 프로토콜
+			- 암호 알고리즘 선택 협상
+			- 키분배
+	- 모드
+		- Transport mode![[Pasted image 20231130114307.png]]
+			- **Host → Host
+			- 관련 host들이 IPsec을 지원해야 함
+			- IP 상위 프로토콜을(TCP, Application) 안전하게 전송
+			- IP header에 IPsec header 정보 추가
+		- Tunnel mode![[Pasted image 20231130114328.png]]
+			- **Host → Gateway ,Gateway → Host
+			- 터널 내의 모든 IP 트래픽 보호
+			- 터널의 시작, 종료 지점에 IPsec gateway
+			- 시작 gateway에서 새 IP header와 IPsec header 추가하고, 종료 gateway에서 제거 
+			- 내부 패킷을 검사하는 라우터 x → 터널 내부 데이터 안전하게 전송 됨
+			- 터널 모드 사용시 다른 출발지 및 목적지 주소 소유 가능
+			- 방화벽에서 구현될 수 있음
